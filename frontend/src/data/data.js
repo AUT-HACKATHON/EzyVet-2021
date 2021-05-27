@@ -1905,7 +1905,4 @@ const vets = [
 	},
 ];
 
-console.log(profiles);
-console.log(vets);
-
 module.exports = { profiles, vets };
