@@ -11,8 +11,8 @@ const Header = () => {
 						<div className="nav-logo">Hello</div>
 					</LinkContainer>
 					<Nav>
-						<LinkContainer className="mx-1" to="/login">
-							<Nav.Link>Login</Nav.Link>
+						<LinkContainer className="mx-1" to="/list">
+							<Nav.Link>List</Nav.Link>
 						</LinkContainer>
 					</Nav>
 				</Container>
