@@ -2,24 +2,28 @@ const mongoose = require('mongoose');
 
 const Location = new mongoose.Schema({
 	lat: {
-		type: String,
+		type: Number,
 		required: true,
 	},
 	lng: {
-		type: String,
+		type: Number,
 		required: true,
 	},
 });
 
 const Vet = new mongoose.Schema({
-	name: {
-		type: Location,
-		required: true,
-	},
 	place_id: {
 		type: String,
 		required: true,
 		unique: true,
+	},
+	name: {
+		type: String,
+		required: true,
+	},
+	location: {
+		type: Location,
+		required: true,
 	},
 	vicinity: {
 		type: String,
@@ -29,7 +33,7 @@ const Vet = new mongoose.Schema({
 		type: Location,
 		required: true,
 	},
-	profiles: [{ type: Schema.Types.ObjectId, ref: 'Profile' }],
+	profiles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Profile' }],
 });
 
 module.exports = mongoose.model('Vet', Vet);

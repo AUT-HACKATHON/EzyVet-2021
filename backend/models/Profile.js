@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
 
 const name = mongoose.Schema({
 	title: {
@@ -16,16 +15,25 @@ const name = mongoose.Schema({
 	},
 });
 
-const Profile = new mongoose.Schema({
-	name: {
-		type: name,
-		required: true,
-	},
+const Date = mongoose.Schema({});
 
+const Profile = new mongoose.Schema({
 	email: {
 		type: String,
 		required: true,
 		unique: true,
+	},
+	gender: {
+		type: name,
+		required: true,
+	},
+	name: {
+		type: name,
+		required: true,
+	},
+	dob: {
+		type: Date,
+		require: true,
 	},
 });
 

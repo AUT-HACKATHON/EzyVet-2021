@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const Profile = require('../models/Profile');
 const Vet = require('../models/Vet');
-require('../data/data');
+const { profiles, vets } = require('../data/data');
 const connectDB = require('./db');
 
 dotenv.config();
@@ -11,9 +11,13 @@ connectDB();
 
 const importData = async () => {
 	try {
-		//await User.deleteMany();
+		await Profile.deleteMany();
+		await Vet.deleteMany();
 
-		//await User.insertMany(users);
+		await Vet.insertMany(vets);
+		for (const profile of profiles) {
+			const mongoProfile = new Profile(profile);
+		}
 
 		console.log('Data Imported');
 		process.exit();
@@ -24,7 +28,8 @@ const importData = async () => {
 };
 const destroyData = async () => {
 	try {
-		await User.deleteMany();
+		await Profile.deleteMany();
+		await Vet.deleteMany();
 
 		console.log('Data destroyed');
 		process.exit();
