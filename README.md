@@ -1,9 +1,9 @@
 <h1 align="center">
 	<br>
-	<a height="200" href="#" target="_blank" alt="Link to application"><img src="https://ezyvetlife.herokuapp.com/logo.png" alt="Random image" width="200"></a>
+	<a height="200" href="#" target="_blank" alt="Link to application"><img src="https://ezyvetlife.herokuapp.com/img/logo.png" alt="Random image" width="200"></a>
 	<br>
 	<br>
-	<p>Aut Games</p>
+	<p>EzyVet Life 2021</p>
 </h1>
 
 <h4 align="center">An vet search website made for the <a href="https://beta.myskillsme.com/" target="_blank" alt="Link to skills me">Skillsme</a> EzyVet Hackathon</h4>
