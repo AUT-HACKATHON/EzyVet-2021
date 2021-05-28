@@ -1,7 +1,7 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const dotenv = require('dotenv');
-const userRoutes = require('./routes/userRoutes');
+const vetRoutes = require('./routes/vetRoutes');
 var cors = require('cors');
 const path = require('path');
 const { notFound, errorHandler } = require('./middleware/error');
@@ -18,7 +18,7 @@ app.use(express.json({ extended: false }));
 
 //ROUTES
 // app.use('/api/articles', bookRoutes);
-app.use('/api/users', userRoutes);
+app.use('/api/vets', vetRoutes);
 
 //Check production or dev
 if (process.env.NODE_ENV === 'production') {
