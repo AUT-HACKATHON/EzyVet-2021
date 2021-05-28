@@ -4,6 +4,7 @@ import { Row, Col } from 'react-bootstrap';
 import Loader from '../components/Loader';
 import { VetContext } from '../context/';
 import axios from 'axios';
+import Map from '../components/Map';
 
 const itemStyle = {
 	backgroundColor: 'transparent',
@@ -84,6 +85,14 @@ const VetScreen = ({ history, match }) => {
 								</ListGroup.Item>
 							)}
 						</ListGroup>
+					</Col>
+					<Col md={12}>
+						<Map
+							markers={[
+								{ lat: vet.location.lat, lng: vet.location.lng, info: vet.name },
+							]}
+							zoom={12}
+						/>
 					</Col>
 				</Row>
 			) : (
