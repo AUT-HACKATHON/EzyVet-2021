@@ -3,6 +3,7 @@ import { Row, Col, Dropdown } from 'react-bootstrap';
 import Loader from '../components/Loader';
 import VetItemList from '../components/VetItemList';
 import { VetContext } from '../context/';
+import PlacesAutocomplete from 'react-places-autocomplete';
 
 const sortArr = ['Default', 'Name', 'Distance', 'Rating'];
 

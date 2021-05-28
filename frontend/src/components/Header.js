@@ -29,14 +29,23 @@ const Header = () => {
 					<Nav>
 						{user ? (
 							<div>
-								<LinkContainer to="/dashboard">
-									<Nav.Link>{user.name}</Nav.Link>
-								</LinkContainer>
-								<NavDropdown title={<i className="fas fa-user"></i>} id="username">
-									<LinkContainer className="mx-1" to="/other">
-										<Nav.Link>Other</Nav.Link>
-									</LinkContainer>
-									<NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
+								<NavDropdown
+									title={<i className="fas fa-user"> {user.name}</i>}
+									id="username"
+								>
+									<NavDropdown.Item className="my-1">
+										<LinkContainer className="p-0" to="/other">
+											<Nav.Link>Other</Nav.Link>
+										</LinkContainer>
+									</NavDropdown.Item>
+									<NavDropdown.Item className="my-1">
+										<LinkContainer className="p-0" to="/dashboard">
+											<Nav.Link>Dashboard</Nav.Link>
+										</LinkContainer>
+									</NavDropdown.Item>
+									<NavDropdown.Item className="my-1" onClick={logout}>
+										Logout
+									</NavDropdown.Item>
 								</NavDropdown>
 							</div>
 						) : (
