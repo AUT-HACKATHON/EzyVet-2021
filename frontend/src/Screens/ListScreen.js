@@ -1,16 +1,17 @@
 import React, { useContext } from 'react';
 import { Row, Col } from 'react-bootstrap';
+import Loader from '../components/Loader';
 import VetItemList from '../components/VetItemList';
 import { VetContext } from '../context/VetContext';
-
 const ListScreen = ({ history }) => {
 	const { vetData } = useContext(VetContext);
 
 	return (
-		<>
-			<h1>Vet clinics</h1>
+		<div className="d-flex flex-column align-items-center">
+			<h1 className="mb-5">Vet clinics</h1>
+
 			{vetData ? (
-				<Row className="my-5">
+				<Row>
 					{vetData.map((value, index) => (
 						<Col key={index} sm={12} md={6} lg={4} xl={3}>
 							<VetItemList vet={value}> </VetItemList>
@@ -18,9 +19,9 @@ const ListScreen = ({ history }) => {
 					))}
 				</Row>
 			) : (
-				<h2>Loading</h2>
+				<Loader className="my-5"></Loader>
 			)}
-		</>
+		</div>
 	);
 };
 
