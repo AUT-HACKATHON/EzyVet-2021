@@ -28,7 +28,7 @@ exports.authUser = asyncHandler(async (req, res) => {
 //@route Post /api/users/login
 //@access Public
 exports.registerUser = asyncHandler(async (req, res) => {
-	const { name, email, password, age } = req.body;
+	const { name, email, password } = req.body;
 
 	const userExists = await User.findOne({ email });
 
