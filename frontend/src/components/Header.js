@@ -23,7 +23,7 @@ const Header = () => {
 					</LinkContainer>
 					<Nav className="ml-auto mr-4">
 						<LinkContainer className="mx-1" to="/list">
-							<Nav.Link>List</Nav.Link>
+							<Nav.Link>Clinics</Nav.Link>
 						</LinkContainer>
 					</Nav>
 					<Nav>
