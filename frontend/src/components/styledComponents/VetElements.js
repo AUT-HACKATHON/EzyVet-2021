@@ -46,3 +46,9 @@ export const VetCardImg = styled.div`
 		border-radius: 2.5rem 0px 0px;
 	}
 `;
+
+export const ProfileImage = styled.img`
+	width: 100%;
+	display: block;
+	object-fit: cover;
+`;

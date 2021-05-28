@@ -11,6 +11,14 @@ const imgStyle = {
 };
 
 const Header = () => {
+	const scrollTo = (id) => {
+		const element = document.getElementById(id);
+
+		element.scrollIntoView({
+			behavior: 'smooth',
+		});
+	};
+
 	const { user, logout } = useContext(UserContext);
 	return (
 		<header>
@@ -22,6 +30,13 @@ const Header = () => {
 						</h1>
 					</LinkContainer>
 					<Nav className="ml-auto mr-4">
+						<LinkContainer className="mx-1" to="/">
+							<Nav.Link onClick={() => scrollTo('about')}>About</Nav.Link>
+						</LinkContainer>
+						<LinkContainer className="mx-1" to="/">
+							<Nav.Link onClick={() => scrollTo('features')}>Features</Nav.Link>
+						</LinkContainer>
+
 						<LinkContainer className="mx-1" to="/list">
 							<Nav.Link>Clinics</Nav.Link>
 						</LinkContainer>
@@ -29,14 +44,20 @@ const Header = () => {
 					<Nav>
 						{user ? (
 							<div>
-								<LinkContainer to="/dashboard">
-									<Nav.Link>{user.name}</Nav.Link>
-								</LinkContainer>
-								<NavDropdown title={<i className="fas fa-user"></i>} id="username">
-									<LinkContainer className="mx-1" to="/other">
-										<Nav.Link>Other</Nav.Link>
-									</LinkContainer>
-									<NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
+								<NavDropdown title={<span> {user.name}</span>} id="username">
+									<NavDropdown.Item className="my-1">
+										<LinkContainer className="p-0" to="/other">
+											<Nav.Link>Other</Nav.Link>
+										</LinkContainer>
+									</NavDropdown.Item>
+									<NavDropdown.Item className="my-1">
+										<LinkContainer className="p-0" to="/dashboard">
+											<Nav.Link>Dashboard</Nav.Link>
+										</LinkContainer>
+									</NavDropdown.Item>
+									<NavDropdown.Item className="my-1" onClick={logout}>
+										Logout
+									</NavDropdown.Item>
 								</NavDropdown>
 							</div>
 						) : (

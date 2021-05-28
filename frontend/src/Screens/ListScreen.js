@@ -104,24 +104,10 @@ const ListScreen = ({ history }) => {
 	return (
 		<div className="d-flex flex-column align-items-center">
 			<h1 className="mb-5">Vet clinics</h1>
-			<Row className="mb-4 ml-5 align-self-stretch d-flex align-items-center">
-				<GooglePlacesAutocomplete
-					apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
-					style={{ minWidth: '80px' }}
-					autocompletionRequest={{
-						componentRestrictions: {
-							country: ['nz'],
-						},
-					}}
-					selectProps={{
-						search,
-						onChange: setSearch,
-					}}
-				/>
-			</Row>
+
 			<Row className="mb-4 ml-5 align-self-stretch d-flex align-items-center">
 				<span className="mr-2">Sort By: </span>
-				<Dropdown onSelect={handleSelectSort}>
+				<Dropdown className="mr-4" onSelect={handleSelectSort}>
 					<Dropdown.Toggle
 						variant="info"
 						id="dropdown-basic"
@@ -138,6 +124,20 @@ const ListScreen = ({ history }) => {
 						))}
 					</Dropdown.Menu>
 				</Dropdown>
+
+				<GooglePlacesAutocomplete
+					apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
+					// style={{ minWidth: '1000px' }}
+					autocompletionRequest={{
+						componentRestrictions: {
+							country: ['nz'],
+						},
+					}}
+					selectProps={{
+						search,
+						onChange: setSearch,
+					}}
+				/>
 			</Row>
 
 			{displayVets ? (
