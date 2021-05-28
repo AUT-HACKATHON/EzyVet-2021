@@ -6,7 +6,6 @@ import { UserContext } from '../context';
 const RegisterScreen = ({ history }) => {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
-	const [age, setAge] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
 	const [message, setMessage] = useState(null);
@@ -28,7 +27,7 @@ const RegisterScreen = ({ history }) => {
 		} else {
 			try {
 				setMessage(null);
-				await register(name, email, age, password);
+				await register(name, email, password);
 			} catch (error) {
 				setError(
 					error.response && error.response.data.message
@@ -62,17 +61,6 @@ const RegisterScreen = ({ history }) => {
 								placeholder="Enter email"
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}
-								required
-							></Form.Control>
-						</Form.Group>
-
-						<Form.Group controlId="age">
-							<Form.Label>Age</Form.Label>
-							<Form.Control
-								type="number"
-								placeholder="Enter your age"
-								value={age}
-								onChange={(e) => setAge(e.target.value)}
 								required
 							></Form.Control>
 						</Form.Group>
