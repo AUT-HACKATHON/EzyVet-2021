@@ -26,6 +26,15 @@ body {
 	transition: all 0.2s linear;
 }
 
+.heart {
+	color: #00d4ca;
+	cursor: pointer;
+}
+.heart:hover {
+	color: #f51010;
+	transition: all 0.2s ease-in;
+}
+
 .navbar {
 	background-color: transparent;
 }

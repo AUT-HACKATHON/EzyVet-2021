@@ -8,3 +8,11 @@ exports.listVets = asyncHandler(async (req, res) => {
 	const list = await Vet.find();
 	res.json(list);
 });
+
+exports.listVetProfiles = asyncHandler(async (req, res) => {
+	const list = await Vet.findOne({ place_id: req.params.id })
+		.populate('profiles')
+		.select('profiles');
+
+	res.json(list.profiles);
+});
