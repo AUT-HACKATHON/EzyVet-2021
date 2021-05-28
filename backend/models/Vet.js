@@ -34,6 +34,19 @@ const Vet = new mongoose.Schema({
 		required: true,
 	},
 	profiles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Profile' }],
+	image: {
+		type: String,
+	},
+	phone: {
+		type: String,
+	},
+	rating: {
+		type: Number,
+	},
+	website: {
+		type: String,
+	},
+	opening_hours: [{ type: String }],
 });
 
 module.exports = mongoose.model('Vet', Vet);
