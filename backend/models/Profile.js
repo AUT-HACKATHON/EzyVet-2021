@@ -7,11 +7,9 @@ const name = mongoose.Schema({
 	},
 	first: {
 		type: String,
-		required: true,
 	},
 	last: {
 		type: String,
-		required: true,
 	},
 });
 
@@ -24,7 +22,7 @@ const Profile = new mongoose.Schema({
 		unique: true,
 	},
 	gender: {
-		type: name,
+		type: String,
 		required: true,
 	},
 	name: {
@@ -34,6 +32,18 @@ const Profile = new mongoose.Schema({
 	dob: {
 		type: Date,
 		require: true,
+	},
+	registered: {
+		type: Date,
+		require: true,
+	},
+	works_at: {
+		type: String,
+		require: true,
+	},
+	picture: {
+		type: String,
+		required: true,
 	},
 });
 

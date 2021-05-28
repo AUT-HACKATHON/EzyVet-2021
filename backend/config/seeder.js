@@ -12,10 +12,8 @@ const key = process.env.REACT_APP_GOOGLE_API_KEY;
 connectDB();
 
 const fetchDetails = async (vet, place) => {
-	console.log(place);
 	let url = 'https://maps.googleapis.com/maps/api/place/details/json?';
 	url += `place_id=${place}&fields=formatted_phone_number,opening_hours,website,rating&key=${key}`;
-	console.log(url);
 	const fetched = await fetch(url);
 	const data = await fetched.json();
 	const { result } = data;
@@ -38,7 +36,6 @@ const fetchDetails = async (vet, place) => {
 };
 
 const fetchPlace = async (vet, name) => {
-	console.log(name);
 	let url = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?';
 	url += `input=${encodeURIComponent(name)}&inputtype=textquery&fields=place_id,photo&key=${key}`;
 	const fetched = await fetch(url);
@@ -65,6 +62,13 @@ const importData = async () => {
 		await Vet.insertMany(vets);
 		for (const profile of profiles) {
 			const mongoProfile = new Profile(profile);
+			await mongoProfile.save();
+			await Vet.findOne({ place_id: profile.works_at })
+				.populate('profiles')
+				.exec(function (err, vet) {
+					vet.profiles = [...vet.profiles, mongoProfile._id];
+					vet.save();
+				});
 		}
 
 		const vetDB = await Vet.find();
