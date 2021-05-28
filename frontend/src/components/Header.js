@@ -1,6 +1,13 @@
 import React from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, Image } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+
+const imgStyle = {
+	width: '200px',
+	// height: '500px',
+	display: 'block',
+	objectFit: 'cover',
+};
 
 const Header = () => {
 	return (
@@ -8,7 +15,9 @@ const Header = () => {
 			<Navbar className="navbar">
 				<Container>
 					<LinkContainer style={{ cursor: 'pointer' }} to="/">
-						<div className="nav-logo">Hello</div>
+						<h1>
+							<Image style={imgStyle} src="img/logo.png"></Image>
+						</h1>
 					</LinkContainer>
 					<Nav>
 						<LinkContainer className="mx-1" to="/list">
