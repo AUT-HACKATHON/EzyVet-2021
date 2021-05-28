@@ -12,7 +12,7 @@ const HomeScreen = ({ history }) => {
 			<Hero></Hero>
 			<About></About>
 			<Features></Features>
-			<Doctors></Doctors>
+			{/* <Doctors></Doctors> */}
 			<Footer></Footer>
 		</>
 	);

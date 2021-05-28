@@ -41,6 +41,7 @@ const VetScreen = ({ history, match }) => {
 	return (
 		<div className="d-flex flex-column align-items-center">
 			<h1 className="mb-4">Details Page</h1>
+
 			{vet ? (
 				<Row>
 					<Col md={6} className="ml-auto">
