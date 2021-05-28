@@ -3,6 +3,7 @@ import { getDistance } from 'geolib';
 import { Row, Col } from 'react-bootstrap';
 import VetItemList from '../components/VetItemList';
 import axios from 'axios';
+import Loader from '../components/Loader';
 
 const ListScreen = ({ history }) => {
 	const [vetData, setVetData] = useState();
@@ -34,7 +35,7 @@ const ListScreen = ({ history }) => {
 		}
 	}, [vetData, setVetData]);
 	return (
-		<>
+		<div className="d-flex flex-column align-items-center">
 			<h1>Vet clinics</h1>
 			{vetData ? (
 				<Row className="my-5">
@@ -45,9 +46,9 @@ const ListScreen = ({ history }) => {
 					))}
 				</Row>
 			) : (
-				<h2>Loading</h2>
+				<Loader className="my-5"></Loader>
 			)}
-		</>
+		</div>
 	);
 };
 
