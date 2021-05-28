@@ -1,23 +1,55 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 
 import { IconContext } from 'react-icons';
+import { UserContext } from '../context';
 const imgStyle = {
 	height: '100px',
 	display: 'block',
 	objectFit: 'cover',
 };
 
-const VetItemList = ({ vet }) => {
+const VetItemList = ({ history, vet }) => {
+	const { user, updateUser } = useContext(UserContext);
+
+	const likeVet = async () => {
+		if (!user) {
+			history.push('/login');
+		} else if (isLiked) {
+			user.liked = user.liked.filter(function (item) {
+				return item !== vet.place_id;
+			});
+		} else {
+			if (!user.liked) {
+				user.liked = [];
+			}
+			user.liked.push(vet.place_id);
+		}
+		console.log(user);
+		updateUser(user);
+	};
+
+	useEffect(() => {}, [user]);
+
+	const isLiked = user && user.liked && user.liked.includes(vet.place_id);
+
 	return (
 		<Card className="m-3 d-flex ">
-			<IconContext.Provider value={{ size: '1.5em', className: 'heart' }}>
-				<div style={{ position: 'absolute', right: '5px', top: '5px' }}>
-					<AiFillHeart />
-				</div>
-			</IconContext.Provider>
+			<div onClick={likeVet}>
+				<IconContext.Provider value={{ size: '1.5em', className: 'heart' }}>
+					{isLiked ? (
+						<div style={{ position: 'absolute', right: '5px', top: '5px' }}>
+							<AiFillHeart />
+						</div>
+					) : (
+						<div style={{ position: 'absolute', right: '5px', top: '5px' }}>
+							<AiOutlineHeart />
+						</div>
+					)}
+				</IconContext.Provider>
+			</div>
 			<Link to={`vet/${vet.place_id}`}>
 				<Card.Img
 					style={imgStyle}

@@ -144,7 +144,9 @@ const ListScreen = ({ history }) => {
 				<Row>
 					{displayVets.map((value, index) => (
 						<Col key={index} sm={12} md={6} lg={4} xl={3}>
-							<VetItemList vet={value}> </VetItemList>
+							<VetItemList history={history} vet={value}>
+								{' '}
+							</VetItemList>
 						</Col>
 					))}
 				</Row>
