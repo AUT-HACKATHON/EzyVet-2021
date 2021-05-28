@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from 'react';
-import { getDistance } from 'geolib';
 import axios from 'axios';
 
 export const VetContext = createContext();
@@ -17,14 +16,6 @@ export const VetProvider = ({ children }) => {
 					longitude: position.coords.longitude,
 				};
 				setLocation(userCoords);
-				// for (const vet of vets) {
-				// 	const coord = { latitude: vet.location.lat, longitude: vet.location.lng };
-				// 	vet.distance = getDistance(userCoords, coord);
-				// }
-				// vets.sort((a, b) => {
-				//   return a.distance - b.distance;
-				// });
-				//setVetData(vets);
 			});
 		}
 	};

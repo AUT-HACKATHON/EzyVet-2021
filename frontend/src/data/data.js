@@ -7,7 +7,7 @@ export const features = [
 	{
 		header: 'Fast',
 		image: '/img/icons/fast-icon.svg',
-		text: 'We have the fastest system Our single page application allows you to search for many vet practices without reloading the page',
+		text: 'We have the fastest searching system, with a single page application allows you to search for many vet practices without reloading the page',
 	},
 	{
 		header: 'Support',

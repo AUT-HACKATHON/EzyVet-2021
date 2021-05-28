@@ -38,7 +38,7 @@ const Header = () => {
 						</LinkContainer>
 
 						<LinkContainer className="mx-1" to="/list">
-							<Nav.Link>List</Nav.Link>
+							<Nav.Link>Clinics</Nav.Link>
 						</LinkContainer>
 					</Nav>
 					<Nav>

@@ -41,7 +41,6 @@ exports.registerUser = asyncHandler(async (req, res) => {
 		name,
 		email,
 		password,
-		age,
 	});
 
 	if (user) {
@@ -68,14 +67,8 @@ exports.getUserProfile = asyncHandler(async (req, res) => {
 			_id: user._id,
 			name: user.name,
 			email: user.email,
-			age: user.age,
-			role: user.role,
-			description: user.description,
 			image: user.image,
-			likedUsers: user.likedUsers,
-			dislikedUsers: user.dislikedUsers,
-			likedByUsers: user.likedByUsers,
-			matchedUsers: user.matchedUsers,
+			liked: user.liked,
 		});
 	} else {
 		res.status(404);
@@ -92,9 +85,7 @@ exports.updateUserProfile = asyncHandler(async (req, res) => {
 	if (user) {
 		user.name = req.body.name || user.name;
 		user.email = req.body.email || user.email;
-		user.role = req.body.role || user.role;
-		user.description = req.body.description || user.description;
-		user.age = req.body.age || user.age;
+		user.liked = req.body.liked || user.liked;
 
 		const updatedUser = await user.save();
 
@@ -102,9 +93,7 @@ exports.updateUserProfile = asyncHandler(async (req, res) => {
 			_id: updatedUser._id,
 			name: updatedUser.name,
 			email: updatedUser.email,
-			role: user.role,
-			description: user.description,
-			age: user.age,
+			liked: user.liked,
 			token: generateToken(updatedUser._id),
 		});
 	} else {
