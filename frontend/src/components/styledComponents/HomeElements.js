@@ -11,15 +11,15 @@ export const ImageStyle = styled.img`
 `;
 
 export const HeaderStyle = styled.h2`
-	font-weight: 700;
+	font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : '700')};
 	line-height: 1.3;
 	margin-bottom: 40px;
-	color: #2b044d;
+	color: ${({ color }) => (color ? color : '#2b044d')};
 	max-width: 100%;
 	font-size: 3em;
 
 	${media('>=desktop', '>=tablet')} {
-		text-align: left;
+		text-align: ${({ align }) => (align ? align : 'left')};
 		font-size: ${({ font }) => (font ? font : '3em')};
 	}
 	${media('<tablet')} {
