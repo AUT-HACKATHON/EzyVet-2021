@@ -4,6 +4,7 @@ import HomeScreen from './Screens/HomeScreen';
 import ListScreen from './Screens/ListScreen';
 import Header from './components/Header';
 import { Container } from 'react-bootstrap';
+import VetScreen from './Screens/VetScreen';
 
 function App() {
 	return (
@@ -13,6 +14,7 @@ function App() {
 				<Container>
 					<Route exact path="/" component={HomeScreen} />
 					<Route exact path="/list" component={ListScreen} />
+					<Route exact path="/vet/:id" component={VetScreen} />
 				</Container>
 			</main>
 		</Router>
