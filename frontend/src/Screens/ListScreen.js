@@ -1,23 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { vets } from '../data/data';
 import { getDistance } from 'geolib';
 
 const ListScreen = ({ history }) => {
-	if ('geolocation' in navigator) {
-		console.log('Available');
-		navigator.geolocation.getCurrentPosition(function (position) {
-			console.log(position);
+	const [vetData, setVetData] = useState();
 
-			const userCoords = position.coords;
-
-			vets.sort((a, b) => {
-				const coordA = { latitude: a.location.lat, longitude: a.location.lng };
-				const coordB = { latitude: b.location.lat, longitude: b.location.lng };
-				return getDistance(userCoords, coordB) - getDistance(userCoords, coordA);
+	useEffect(() => {
+		if (!vetData && 'geolocation' in navigator) {
+			console.log('Available');
+			navigator.geolocation.getCurrentPosition(function (position) {
+				const userCoords = {
+					latitude: position.coords.latitude,
+					longitude: position.coords.longitude,
+				};
+				vets.sort((a, b) => {
+					const coordA = { latitude: a.location.lat, longitude: a.location.lng };
+					const coordB = { latitude: b.location.lat, longitude: b.location.lng };
+					return getDistance(userCoords, coordB) - getDistance(userCoords, coordA);
+				});
+				setVetData(vets);
 			});
-			console.log(vets);
-		});
-	}
+		}
+	}, [vetData, setVetData]);
 	return (
 		<>
 			List:
