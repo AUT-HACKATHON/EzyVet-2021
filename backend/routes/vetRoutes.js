@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { listVets, listVetProfiles } = require('../controllers/VetController');
+const { listVets, listVetProfiles } = require('../controllers/vetController');
 
 const router = express.Router();
 
