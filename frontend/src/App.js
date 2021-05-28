@@ -4,6 +4,7 @@ import HomeScreen from './Screens/HomeScreen';
 import ListScreen from './Screens/ListScreen';
 import Header from './components/Header';
 import { Container } from 'react-bootstrap';
+import { VetProvider } from './context/VetContext';
 
 function App() {
 	return (
