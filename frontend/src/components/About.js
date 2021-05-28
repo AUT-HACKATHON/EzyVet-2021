@@ -26,6 +26,7 @@ const About = () => {
 		marginBottom: '20px',
 		fontWeight: '400',
 		maxWidth: '300px',
+		textAlign: 'right',
 	};
 	return (
 		<div id="about" style={{ minHeight: '100vh' }}>
@@ -33,18 +34,18 @@ const About = () => {
 			<Row className="d-flex justify-content-between">
 				<Col md={7} className="">
 					<Slide left>
-						<Image style={imgStyle} src="img/park1.png"></Image>
+						<Image style={imgStyle} src="img/about.png"></Image>
 					</Slide>
 				</Col>
 				<Col md={5} className="d-flex flex-column align-items-baseline mb-5">
-					<Slide right>
-						<h2 style={headerStyle}>About us</h2>
-						<div style={textStyle}>
-							More than 3000 pet lovers have joined us and made lives for their pets
-							easier. Take ezyVet for a test drive and book a demo to find out what
-							ezyVet can do for you
-						</div>
-					</Slide>
+					{/* <Slide right className="d-flex flex-column align-items-baseline mb-5"> */}
+					<h2 style={headerStyle}>About us</h2>
+					<div style={textStyle}>
+						More than 3000 pet lovers have joined us and made lives for their pets
+						easier. Take ezyVet for a test drive and book a demo to find out what ezyVet
+						can do for you
+					</div>
+					{/* </Slide> */}
 
 					{/* <Button id="heroBtn">Join now</Button> */}
 				</Col>
