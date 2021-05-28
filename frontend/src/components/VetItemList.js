@@ -19,7 +19,11 @@ const VetItemList = ({ vet }) => {
 				</div>
 			</IconContext.Provider>
 			<Link to={`vet/${vet.place_id}`}>
-				<Card.Img style={imgStyle} src={``} variant="top" />
+				<Card.Img
+					style={imgStyle}
+					src={vet.image ? vet.image : '/img/logo.png'}
+					variant="top"
+				/>
 			</Link>
 			<Card.Body className="d-flex flex-column" style={{ minHeight: '200px' }}>
 				<Link to={`vet/${vet.place_id}`}>

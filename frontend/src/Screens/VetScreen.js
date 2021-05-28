@@ -46,8 +46,7 @@ const VetScreen = ({ history, match }) => {
 						<Image
 							style={imgStyle}
 							className="ml-5"
-							// src={vet.photo}
-							src={``}
+							src={vet.image ? vet.image : '/img/logo.png'}
 						></Image>
 					</Col>
 					<Col md={6}>
