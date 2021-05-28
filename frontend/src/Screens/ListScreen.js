@@ -97,7 +97,7 @@ const ListScreen = ({ history }) => {
 			<Row className="mb-4 ml-5 align-self-stretch d-flex align-items-center">
 				<GooglePlacesAutocomplete
 					apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
-					style={{ minWidth: '80px' }}
+					// style={{ minWidth: '1000px' }}
 					autocompletionRequest={{
 						componentRestrictions: {
 							country: ['nz'],

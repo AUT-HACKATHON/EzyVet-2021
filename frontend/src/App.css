@@ -87,6 +87,13 @@ body {
 	transform: translate(-20%, -10%);
 }
 
+.css-yk16xz-control {
+	min-width: 200px;
+}
+.css-1pahdxg-control {
+	min-width: 200px;
+}
+
 /* Stolen CSS */
 /* .pulse {
 	margin: auto;
