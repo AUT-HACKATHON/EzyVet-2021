@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import { getDistance } from 'geolib';
 import axios from 'axios';
 
-export const VetContext = React.createContext();
+export const VetContext = createContext();
 
 export const VetProvider = ({ children }) => {
 	const [vetData, setVetData] = useState();
 
 	useEffect(() => {
-		if (!vetData && 'geolocation' in navigator) {
-			const fetchVets = async () => {
-				const { data: vets } = await axios.get('/api/vets/list');
-				console.log('Available');
+		const fetchVets = async () => {
+			const { data: vets } = await axios.get('/api/vets/list');
+			if ('geolocation' in navigator) {
 				navigator.geolocation.getCurrentPosition(function (position) {
 					const userCoords = {
 						latitude: position.coords.latitude,
@@ -26,11 +25,11 @@ export const VetProvider = ({ children }) => {
 					});
 					setVetData(vets);
 				});
-				setVetData(vets);
-			};
-			fetchVets();
-		}
-	}, [vetData, setVetData]);
+			}
+			setVetData(vets);
+		};
+		fetchVets();
+	}, [setVetData]);
 
 	const contextValue = {
 		vetData,

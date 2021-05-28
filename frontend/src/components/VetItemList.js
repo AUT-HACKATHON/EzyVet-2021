@@ -11,7 +11,6 @@ const imgStyle = {
 };
 
 const VetItemList = ({ vet }) => {
-	const key = process.env.REACT_APP_GOOGLE_API_KEY;
 	return (
 		<Card className="m-3 d-flex ">
 			<IconContext.Provider value={{ size: '1.5em', className: 'heart' }}>
@@ -22,7 +21,7 @@ const VetItemList = ({ vet }) => {
 			<Link to={`vet/${vet.place_id}`}>
 				<Card.Img
 					style={imgStyle}
-					src={`https://maps.googleapis.com/maps/api/streetview?location=${vet.vicinity}&size=456x456&key=${key}`}
+					src={vet.image ? vet.image : '/img/logo.png'}
 					variant="top"
 				/>
 			</Link>

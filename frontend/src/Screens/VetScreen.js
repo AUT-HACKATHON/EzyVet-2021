@@ -2,17 +2,9 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Card, Image, ListGroup } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
 import Loader from '../components/Loader';
-import { VetContext } from '../context/VetContext';
+import { VetContext } from '../context/';
 import axios from 'axios';
-import { matchPath } from 'react-router';
-
-/*
-phone number
-photo
-rating
-opening hours
-website
-*/
+import Map from '../components/Map';
 
 const itemStyle = {
 	backgroundColor: 'transparent',
@@ -29,7 +21,6 @@ const VetScreen = ({ history, match }) => {
 	const { vetData } = useContext(VetContext);
 	const [vet, setVet] = useState();
 	const [profiles, setProfiles] = useState();
-	const key = process.env.REACT_APP_GOOGLE_API_KEY;
 
 	// const vet = vetData.find((x) => x.place_id === match.params.id);
 
@@ -41,25 +32,23 @@ const VetScreen = ({ history, match }) => {
 
 		const fetchProfiles = async () => {
 			const { data } = await axios.get('/api/vets/listProfiles/' + match.params.id);
-			console.log(data);
 			setProfiles(data);
 		};
 
 		fetchProfiles();
 	}, [match.params.id, vetData]);
 
-	// console.log(profiles);
 	return (
 		<div className="d-flex flex-column align-items-center">
 			<h1 className="mb-4">Details Page</h1>
+
 			{vet ? (
 				<Row>
 					<Col md={6} className="ml-auto">
 						<Image
 							style={imgStyle}
 							className="ml-5"
-							// src={vet.photo}
-							src={`https://maps.googleapis.com/maps/api/streetview?location=${vet.vicinity}&size=456x456&key=${key}`}
+							src={vet.image ? vet.image : '/img/logo.png'}
 						></Image>
 					</Col>
 					<Col md={6}>
@@ -97,6 +86,14 @@ const VetScreen = ({ history, match }) => {
 								</ListGroup.Item>
 							)}
 						</ListGroup>
+					</Col>
+					<Col md={12}>
+						<Map
+							markers={[
+								{ lat: vet.location.lat, lng: vet.location.lng, info: vet.name },
+							]}
+							zoom={12}
+						/>
 					</Col>
 				</Row>
 			) : (

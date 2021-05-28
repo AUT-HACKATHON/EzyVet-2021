@@ -3,11 +3,11 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 const Footer = () => {
 	return (
-		<footer className="p-3 mb-2" style={{ backgroundColor: 'transparenet' }}>
+		<footer className="p-3 mb-2" style={{ backgroundColor: 'transparent' }}>
 			<Container>
 				<Row>
 					<Col md={4} className="text-center py-3">
-						Copyright &copy; Aldar
+						Copyright &copy; Aldar & Ashley
 					</Col>
 					<Col md={4} className="text-center py-3">
 						<div>Author:</div>

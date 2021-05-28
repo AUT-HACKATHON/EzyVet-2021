@@ -1,6 +1,7 @@
-import React from 'react';
-import { Navbar, Nav, Container, Image } from 'react-bootstrap';
+import { useContext } from 'react';
+import { Navbar, Nav, Container, Image, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { UserContext } from '../context/';
 
 const imgStyle = {
 	width: '200px',
@@ -10,6 +11,7 @@ const imgStyle = {
 };
 
 const Header = () => {
+	const { user, logout } = useContext(UserContext);
 	return (
 		<header>
 			<Navbar className="navbar">
@@ -19,10 +21,29 @@ const Header = () => {
 							<Image style={imgStyle} src="/img/logo.png"></Image>
 						</h1>
 					</LinkContainer>
-					<Nav>
+					<Nav className="ml-auto mr-4">
 						<LinkContainer className="mx-1" to="/list">
 							<Nav.Link>List</Nav.Link>
 						</LinkContainer>
+					</Nav>
+					<Nav>
+						{user ? (
+							<div>
+								<LinkContainer to="/dashboard">
+									<Nav.Link>{user.name}</Nav.Link>
+								</LinkContainer>
+								<NavDropdown title={<i className="fas fa-user"></i>} id="username">
+									<LinkContainer className="mx-1" to="/other">
+										<Nav.Link>Other</Nav.Link>
+									</LinkContainer>
+									<NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
+								</NavDropdown>
+							</div>
+						) : (
+							<LinkContainer className="mx-1" to="/login">
+								<Nav.Link>Login</Nav.Link>
+							</LinkContainer>
+						)}
 					</Nav>
 				</Container>
 			</Navbar>

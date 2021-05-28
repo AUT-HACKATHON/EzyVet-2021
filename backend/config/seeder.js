@@ -47,7 +47,12 @@ const fetchPlace = async (vet, name) => {
 		const place_id = candidate.place_id;
 		const { photos } = candidate;
 		if (photos?.length > 0) {
-			if (vet) vet.photo = photos[0].photo_reference;
+			if (vet) {
+				let photoUrl = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=800';
+				photoUrl += `&photoreference=${photos[0].photo_reference}&key=${key}`;
+				const check = await fetch(photoUrl);
+				vet.image = check.url;
+			}
 		}
 		await fetchDetails(vet, place_id);
 		vet?.save();
@@ -60,6 +65,12 @@ const importData = async () => {
 		await Vet.deleteMany();
 
 		await Vet.insertMany(vets);
+
+		const vetDB = await Vet.find();
+		for (const vet of vetDB) {
+			await fetchPlace(vet, vet.name);
+		}
+
 		for (const profile of profiles) {
 			const mongoProfile = new Profile(profile);
 			await mongoProfile.save();
@@ -71,10 +82,6 @@ const importData = async () => {
 				});
 		}
 
-		const vetDB = await Vet.find();
-		for (const vet of vetDB) {
-			await fetchPlace(vet, vet.name);
-		}
 		console.log('Data Imported');
 		process.exit();
 	} catch (err) {
