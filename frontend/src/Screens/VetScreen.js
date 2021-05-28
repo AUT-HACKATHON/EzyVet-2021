@@ -20,7 +20,6 @@ const VetScreen = ({ history, match }) => {
 	const { vetData } = useContext(VetContext);
 	const [vet, setVet] = useState();
 	const [profiles, setProfiles] = useState();
-	const key = process.env.REACT_APP_GOOGLE_API_KEY;
 
 	// const vet = vetData.find((x) => x.place_id === match.params.id);
 
@@ -48,7 +47,7 @@ const VetScreen = ({ history, match }) => {
 							style={imgStyle}
 							className="ml-5"
 							// src={vet.photo}
-							src={`https://maps.googleapis.com/maps/api/streetview?location=${vet.vicinity}&size=456x456&key=${key}`}
+							src={``}
 						></Image>
 					</Col>
 					<Col md={6}>
