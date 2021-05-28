@@ -3,10 +3,14 @@ import { Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const VetItemList = ({ vet }) => {
+	const key = process.env.REACT_APP_GOOGLE_API_KEY;
 	return (
 		<Card className="m-3 d-flex " style={{ minHeight: '300px' }}>
 			<Link to={`vet/${vet.place_id}`}>
-				<Card.Img src={vet.image} variant="top" />
+				<Card.Img
+					src={`https://maps.googleapis.com/maps/api/streetview?location=${vet.vicinity}&size=456x456&key=${key}`}
+					variant="top"
+				/>
 			</Link>
 			<Card.Body className="d-flex flex-column">
 				<Link to={`vet/${vet.place_id}`}>
