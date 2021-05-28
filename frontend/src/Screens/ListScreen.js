@@ -4,14 +4,17 @@ import Loader from '../components/Loader';
 import VetItemList from '../components/VetItemList';
 import { VetContext } from '../context/';
 import GooglePlacesAutocomplete, { geocodeByPlaceId } from 'react-google-places-autocomplete';
+import { getDistance } from 'geolib';
 
 const sortArr = ['Default', 'Name', 'Distance', 'Rating'];
 
 const ListScreen = ({ history }) => {
-	const { vetData, location } = useContext(VetContext);
+	const { vetData, setVetData, location, requestLocation, setLocation } = useContext(VetContext);
 	const [displayVets, setDisplayVets] = useState();
 	const [search, setSearch] = useState(null);
 	const [sort, setSort] = useState('Default');
+
+	requestLocation();
 
 	useEffect(() => {
 		if (vetData) {
@@ -21,11 +24,19 @@ const ListScreen = ({ history }) => {
 
 	useEffect(() => {
 		if (vetData && location) {
+			const vets = [...vetData];
+			for (const vet of vets) {
+				const coord = { latitude: vet.location.lat, longitude: vet.location.lng };
+				vet.distance = getDistance(location, coord);
+			}
+			vets.sort((a, b) => {
+				return a.distance - b.distance;
+			});
 			if (sort === 'Distance') {
-				//TODO sort by location
+				setDisplayVets(vets);
 			}
 		}
-	}, [location, sort, vetData]);
+	}, [location, setVetData, sort, vetData]);
 
 	useEffect(() => {
 		console.log(displayVets);
@@ -38,14 +49,13 @@ const ListScreen = ({ history }) => {
 					const { geometry } = results[0];
 					let coords = {};
 					if (geometry.location) {
-						coords.lat = geometry.location.lat();
+						coords.latitude = geometry.location.lat();
 						coords.lng = geometry.location.lng();
 					} else if (geometry.bounds) {
-						coords.lat = geometry.bounds.La.g;
-						coords.lng = geometry.bounds.Ua.g;
+						coords.latitude = geometry.bounds.La.g;
+						coords.longitude = geometry.bounds.Ua.g;
 					}
-					console.log(coords);
-					//TODO add coords
+					setLocation(coords);
 				})
 				.catch(console.error);
 		}
