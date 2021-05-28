@@ -11,6 +11,14 @@ const imgStyle = {
 };
 
 const Header = () => {
+	const scrollTo = (id) => {
+		const element = document.getElementById(id);
+
+		element.scrollIntoView({
+			behavior: 'smooth',
+		});
+	};
+
 	const { user, logout } = useContext(UserContext);
 	return (
 		<header>
@@ -22,6 +30,13 @@ const Header = () => {
 						</h1>
 					</LinkContainer>
 					<Nav className="ml-auto mr-4">
+						<LinkContainer className="mx-1" to="/">
+							<Nav.Link onClick={() => scrollTo('about')}>About</Nav.Link>
+						</LinkContainer>
+						<LinkContainer className="mx-1" to="/">
+							<Nav.Link onClick={() => scrollTo('features')}>Features</Nav.Link>
+						</LinkContainer>
+
 						<LinkContainer className="mx-1" to="/list">
 							<Nav.Link>List</Nav.Link>
 						</LinkContainer>
@@ -29,10 +44,7 @@ const Header = () => {
 					<Nav>
 						{user ? (
 							<div>
-								<NavDropdown
-									title={<i className="fas fa-user"> {user.name}</i>}
-									id="username"
-								>
+								<NavDropdown title={<span> {user.name}</span>} id="username">
 									<NavDropdown.Item className="my-1">
 										<LinkContainer className="p-0" to="/other">
 											<Nav.Link>Other</Nav.Link>
