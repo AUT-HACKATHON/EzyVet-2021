@@ -24,7 +24,7 @@ const Features = () => {
 										<img src={el.image} alt="" />
 									</FeatureImage>
 									<FeatureTitle font="1em">{el.header}</FeatureTitle>
-									<TextStyle font={'0.9rem'}>{el.text}</TextStyle>
+									<TextStyle font={'1rem'}>{el.text}</TextStyle>
 								</FeatureCard>
 							</Fade>
 						</Col>

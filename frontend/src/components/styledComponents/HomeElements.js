@@ -5,7 +5,7 @@ export const ImageStyle = styled.img`
 	width: 100%;
 	display: block;
 	object-fit: cover;
-	@media screen and (max-width: 768px) {
+	${media('<tablet')} {
 		display: none;
 	}
 `;
