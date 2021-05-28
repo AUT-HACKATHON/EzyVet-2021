@@ -1,10 +1,12 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const dotenv = require('dotenv');
-const vetRoutes = require('./routes/vetRoutes');
 var cors = require('cors');
 const path = require('path');
 const { notFound, errorHandler } = require('./middleware/error');
+
+const vetRoutes = require('./routes/vetRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 
@@ -19,6 +21,7 @@ app.use(express.json({ extended: false }));
 //ROUTES
 // app.use('/api/articles', bookRoutes);
 app.use('/api/vets', vetRoutes);
+app.use('/api/users', userRoutes);
 
 //Check production or dev
 if (process.env.NODE_ENV === 'production') {
@@ -37,4 +40,4 @@ app.use(errorHandler);
 
 const port = process.env.PORT || 5000;
 
-app.listen(port, console.log('Server is running on the port 8000'));
+app.listen(port, console.log(`Server is running on the port ${port}`));

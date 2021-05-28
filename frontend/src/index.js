@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { VetProvider } from './context/VetContext';
+import { VetProvider, UserProvider } from './context/';
 
 ReactDOM.render(
 	<React.Fragment>
 		<VetProvider>
-			<App />
+			<UserProvider>
+				<App />
+			</UserProvider>
 		</VetProvider>
 	</React.Fragment>,
 	document.getElementById('root')

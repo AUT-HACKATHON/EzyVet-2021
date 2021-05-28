@@ -2,17 +2,8 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Card, Image, ListGroup } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
 import Loader from '../components/Loader';
-import { VetContext } from '../context/VetContext';
+import { VetContext } from '../context/';
 import axios from 'axios';
-import { matchPath } from 'react-router';
-
-/*
-phone number
-photo
-rating
-opening hours
-website
-*/
 
 const itemStyle = {
 	backgroundColor: 'transparent',
@@ -41,14 +32,12 @@ const VetScreen = ({ history, match }) => {
 
 		const fetchProfiles = async () => {
 			const { data } = await axios.get('/api/vets/listProfiles/' + match.params.id);
-			console.log(data);
 			setProfiles(data);
 		};
 
 		fetchProfiles();
 	}, [match.params.id, vetData]);
 
-	// console.log(profiles);
 	return (
 		<div className="d-flex flex-column align-items-center">
 			<h1 className="mb-4">Details Page</h1>

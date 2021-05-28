@@ -19,9 +19,14 @@ const Header = () => {
 							<Image style={imgStyle} src="/img/logo.png"></Image>
 						</h1>
 					</LinkContainer>
-					<Nav>
+					<Nav className="ml-auto mr-4">
 						<LinkContainer className="mx-1" to="/list">
 							<Nav.Link>List</Nav.Link>
+						</LinkContainer>
+					</Nav>
+					<Nav>
+						<LinkContainer className="mx-1" to="/login">
+							<Nav.Link>Login</Nav.Link>
 						</LinkContainer>
 					</Nav>
 				</Container>

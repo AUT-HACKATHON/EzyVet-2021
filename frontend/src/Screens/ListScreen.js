@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Loader from '../components/Loader';
 import VetItemList from '../components/VetItemList';
-import { VetContext } from '../context/VetContext';
+import { VetContext } from '../context/';
 const ListScreen = ({ history }) => {
 	const { vetData } = useContext(VetContext);
 
