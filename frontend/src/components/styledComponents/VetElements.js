@@ -47,8 +47,12 @@ export const VetCardImg = styled.div`
 	}
 `;
 
+// export const VetCardInfo =
+
 export const ProfileImage = styled.img`
 	width: 100%;
+	max-width: 150px;
+	border-radius: 50%;
 	display: block;
 	object-fit: cover;
 `;

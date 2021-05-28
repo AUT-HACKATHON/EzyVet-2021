@@ -28,10 +28,10 @@ export const HeaderStyle = styled.h2`
 `;
 
 export const TextStyle = styled.div`
-	color: #031e45;
+	color: ${({ color }) => (color ? color : '#031e45')};
 	font-size: ${({ font }) => (font ? font : '1.5em')};
 	line-height: 30px;
-	margin-bottom: 2em;
+	margin-bottom: ${({ mb }) => (mb ? mb : '2em')};
 	font-weight: 400;
 	/* max-width: 300px; */
 	text-align: center;

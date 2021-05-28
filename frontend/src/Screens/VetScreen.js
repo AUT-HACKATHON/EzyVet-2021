@@ -5,7 +5,8 @@ import Loader from '../components/Loader';
 import { VetContext } from '../context/';
 import axios from 'axios';
 import Map from '../components/Map';
-import { HeaderStyle } from '../components/styledComponents/HomeElements';
+import { HeaderStyle, TextStyle } from '../components/styledComponents/HomeElements';
+import { ProfileImage } from '../components/styledComponents/VetElements';
 
 const itemStyle = {
 	backgroundColor: 'transparent',
@@ -16,6 +17,10 @@ const imgStyle = {
 	display: 'block',
 	objectFit: 'cover',
 	right: '0px',
+};
+const doctorStyle = {
+	border: '1px solid #c7c7c7',
+	background: 'white',
 };
 
 const VetScreen = ({ history, match }) => {
@@ -64,7 +69,8 @@ const VetScreen = ({ history, match }) => {
 								</ListGroup.Item>
 								{vet.phone && (
 									<ListGroup.Item style={itemStyle}>
-										Phone Number: {vet.phone}
+										Phone Number:{' '}
+										<a href={'mailto:' + vet.phone}>{vet.phone}</a>
 									</ListGroup.Item>
 								)}
 								{vet.website && (
@@ -85,7 +91,7 @@ const VetScreen = ({ history, match }) => {
 											style={{
 												backgroundColor: 'transparent',
 												cursor: 'pointer',
-												color: '#1FA167',
+												color: '#4a56b9',
 												fontStyle: 'italic',
 											}}
 											eventKey="0"
@@ -95,7 +101,7 @@ const VetScreen = ({ history, match }) => {
 										<Accordion.Collapse eventKey="0">
 											<ListGroup>
 												{vet.opening_hours.map((el, index) => (
-													<ListGroup.Item style={itemStyle}>
+													<ListGroup.Item key={index}>
 														<div key={index}>{el}</div>
 													</ListGroup.Item>
 												))}
@@ -105,52 +111,83 @@ const VetScreen = ({ history, match }) => {
 								)}
 							</ListGroup>
 						</Col>
-						<Row>
-							<Accordion defaultActiveKey="1">
-								<Accordion.Toggle eventKey="0">Show Doctors</Accordion.Toggle>
-								<Accordion.Collapse eventKey="0">
-									<ListGroup variant="flush">
-										{profiles &&
-											profiles.map((el, index) => (
-												<ListGroup.Item key={index} style={itemStyle}>
-													<Card>
-														<Card.Body className="d-flex">
-															<Card.Img
-																src={`/img/${el.picture}`}
-															></Card.Img>
-															<Card.Text>
-																Name: {el.name.title}{' '}
-																{el.name.first} {el.name.last}
-															</Card.Text>
-														</Card.Body>
-													</Card>
-												</ListGroup.Item>
-											))}
-									</ListGroup>
-								</Accordion.Collapse>
-							</Accordion>
-						</Row>
-						<Col md={12} className="my-3 mx-auto">
-							<HeaderStyle
-								font="2.4rem"
-								color="black"
-								fontWeight="500"
-								align="center"
-							>
-								Find on the map
-							</HeaderStyle>
-							<Map
-								markers={[
-									{
-										lat: vet.location.lat,
-										lng: vet.location.lng,
-										info: vet.name,
-									},
-								]}
-								zoom={12}
-							/>
-						</Col>
 					</Row>
+					<Row className="my-3 align-self-center">
+						<Accordion
+							defaultActiveKey="1"
+							className="d-flex justify-content-center flex-column align-items-center"
+						>
+							<Accordion.Toggle
+								eventKey="0"
+								style={{
+									backgroundColor: 'transparent',
+									cursor: 'pointer',
+									color: '#4a56b9',
+									border: '0',
+									borderBottom: '1px solid',
+									borderRadius: '20%',
+								}}
+								as={ListGroup.Item}
+							>
+								Show Doctors
+							</Accordion.Toggle>
+							<Accordion.Collapse eventKey="0">
+								<Row className="justify-content-center align-items-center d-flex">
+									{profiles &&
+										profiles.map((el, index) => (
+											<Col
+												md={5}
+												key={index}
+												style={doctorStyle}
+												className="d-flex justify-content-center align-items-center mx-1 my-1"
+											>
+												<Col md={4}>
+													<ProfileImage
+														src={`/img/${el.picture}`}
+													></ProfileImage>
+												</Col>
+												<Col md={8}>
+													<TextStyle font="1em" mb="0.3em">
+														{el.name.title} {el.name.first}{' '}
+														{el.name.last}
+													</TextStyle>
+													<TextStyle font="0.8em" mb="0.3em">
+														<a href={'mailto:' + el.email}>
+															{el.email}
+														</a>
+													</TextStyle>
+													<TextStyle
+														font="0.8em"
+														mb="0.3em"
+														color="#838383"
+													>
+														Age: {el.dob.age}
+													</TextStyle>
+													<TextStyle font="0.8em" mb="0.3em">
+														Experience: {el.registered.age} years
+													</TextStyle>
+												</Col>
+											</Col>
+										))}
+								</Row>
+							</Accordion.Collapse>
+						</Accordion>
+					</Row>
+					<Col md={12} className="my-3 mx-auto">
+						<HeaderStyle font="2.4rem" color="black" fontWeight="500" align="center">
+							Find on the map
+						</HeaderStyle>
+						<Map
+							markers={[
+								{
+									lat: vet.location.lat,
+									lng: vet.location.lng,
+									info: vet.name,
+								},
+							]}
+							zoom={12}
+						/>
+					</Col>
 				</>
 			) : (
 				<Loader />

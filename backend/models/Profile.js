@@ -13,7 +13,14 @@ const name = mongoose.Schema({
 	},
 });
 
-const Date = mongoose.Schema({});
+const Date = mongoose.Schema({
+	year: {
+		type: String,
+	},
+	age: {
+		type: Number,
+	},
+});
 
 const Profile = new mongoose.Schema({
 	email: {

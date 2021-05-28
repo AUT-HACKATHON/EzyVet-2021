@@ -59,7 +59,7 @@ const ListScreen = ({ history }) => {
 				})
 				.catch(console.error);
 		}
-	}, [search]);
+	}, [search, setLocation]);
 
 	const compare = (vet1, vet2, type) => {
 		if (type === 'Default') {
@@ -88,26 +88,16 @@ const ListScreen = ({ history }) => {
 	};
 
 	const handleSelectSort = (type) => {
-		// if (type === 'Default') {
-		// 	setDisplayVets(vetData);
-		// 	setSort('Default');
-		// 	return;
-		// }
-		// const filteredArticles = [...articles].filter((el) => {
-		// 	return el.se_practice === type;
-		// });
-		// console.log(filteredArticles);
-		// setDisplayArticles(filteredArticles);
 		sortArray(type);
 		setSort(type);
 	};
 	return (
 		<div className="d-flex flex-column align-items-center">
-			<h1 className="mb-5">Vet clinics</h1>
+			<h1 className="mb-3">Vet clinics</h1>
 
-			<Row className="mb-4 ml-5 align-self-stretch d-flex align-items-center">
-				<span className="mr-2">Sort By: </span>
-				<Dropdown className="mr-4" onSelect={handleSelectSort}>
+			<Row className="mb-4 ml-5  align-self-stretch d-flex align-items-center">
+				<span className="mr-2 my-1">Sort By: </span>
+				<Dropdown className="mr-4 my-1" onSelect={handleSelectSort}>
 					<Dropdown.Toggle
 						variant="info"
 						id="dropdown-basic"
@@ -124,20 +114,22 @@ const ListScreen = ({ history }) => {
 						))}
 					</Dropdown.Menu>
 				</Dropdown>
-
-				<GooglePlacesAutocomplete
-					apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
-					// style={{ minWidth: '1000px' }}
-					autocompletionRequest={{
-						componentRestrictions: {
-							country: ['nz'],
-						},
-					}}
-					selectProps={{
-						search,
-						onChange: setSearch,
-					}}
-				/>
+				<div className="my-1">
+					<GooglePlacesAutocomplete
+						apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
+						// style={{ minWidth: '1000px' }}
+						autocompletionRequest={{
+							componentRestrictions: {
+								country: ['nz'],
+							},
+						}}
+						selectProps={{
+							search,
+							onChange: setSearch,
+							placeholder: 'Your location...',
+						}}
+					/>
+				</div>
 			</Row>
 
 			{displayVets ? (
