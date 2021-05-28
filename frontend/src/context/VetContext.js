@@ -26,6 +26,7 @@ export const VetProvider = ({ children }) => {
 					});
 					setVetData(vets);
 				});
+				setVetData(vets);
 			};
 			fetchVets();
 		}
