@@ -16,7 +16,7 @@ const Header = () => {
 				<Container>
 					<LinkContainer style={{ cursor: 'pointer' }} to="/">
 						<h1>
-							<Image style={imgStyle} src="img/logo.png"></Image>
+							<Image style={imgStyle} src="/img/logo.png"></Image>
 						</h1>
 					</LinkContainer>
 					<Nav>
