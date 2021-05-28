@@ -13,7 +13,7 @@ export const UserProvider = ({ children }) => {
 	const [user, setUser] = useState();
 
 	const localUser = localStorage.getItem('userInfo');
-	if (localUser) {
+	if (!user && localUser) {
 		setUser(JSON.parse(localUser));
 	}
 
