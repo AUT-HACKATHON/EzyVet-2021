@@ -19,7 +19,7 @@ export const UserProvider = ({ children }) => {
 
 	const login = async (email, password) => {
 		const { data } = await axios.post('/api/users/login', { email, password }, config);
-		login(data);
+		setUser(data);
 		localStorage.setItem('userInfo', JSON.stringify(data));
 
 		return data;
@@ -37,7 +37,12 @@ export const UserProvider = ({ children }) => {
 		return data;
 	};
 
-	const contextValue = { user, setUser, login, register };
+	const logout = async () => {
+		localStorage.removeItem('userInfo');
+		setUser(undefined);
+	};
+
+	const contextValue = { user, setUser, login, register, logout };
 
 	return <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>;
 };
