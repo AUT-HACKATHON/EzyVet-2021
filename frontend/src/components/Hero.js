@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 import Slide from 'react-reveal';
 import { LinkContainer } from 'react-router-bootstrap';
+import { ImageStyle, HeaderStyle, TextStyle } from './HomeElements';
 
 const Hero = () => {
 	const imgStyle = {
@@ -54,7 +55,7 @@ const Hero = () => {
 					</Col>
 					<Col md={7} className="d-flex flex-column justify-content-center my-5">
 						<Slide right>
-							<Image style={imgStyle} src="img/welcome.png"></Image>
+							<ImageStyle width={'100%'} src="img/welcome.png"></ImageStyle>
 						</Slide>
 					</Col>
 				</Row>

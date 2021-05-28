@@ -9,6 +9,7 @@ const ListScreen = ({ history }) => {
 	return (
 		<div className="d-flex flex-column align-items-center">
 			<h1 className="mb-5">Vet clinics</h1>
+
 			{vetData ? (
 				<Row>
 					{vetData.map((value, index) => (
