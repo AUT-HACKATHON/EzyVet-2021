@@ -25,9 +25,9 @@
 		<a href="#credits">Credits</a>
 </p>
 
-## Demo
+## Product Architecture
 
-Front end Demo: <a href="https://youtube.com">https://youtube.com</a>
+![image](https://user-images.githubusercontent.com/48781163/120053553-f85a1e80-c07e-11eb-95c1-7e3017c31f94.png)
 
 ## How To Use
 
@@ -65,7 +65,7 @@ npm run dev
 <p> 
 <strong>The MIT License</strong><br>
 
-Copyright 2021 AUT Games
+Copyright 2021 Ezy Vet
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -81,3 +81,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 > Github [@MrGeet](https://github.com/MrGeet) &nbsp;&middot;&nbsp;<br>
 > Discord [@Dablakbandit#0001](http://urlecho.appspot.com/echo?status=200&Content-Type=text%2Fhtml&body=Dablakbandit%230001) &nbsp;&middot;&nbsp;
 > Github [@AshleyThew](https://github.com/AshleyThew)
+
+### Contribution 
+
+Aldar: Frontend setup, landing page, displaying meaningful information, list screen, using styled components, routing, docs, product architecture and design, trello setup
+
+Ashley: Backend setup, database setup and seeder, api routes, google api integration, display map on details screen, autherization and context hooks, user stories, trello
+
