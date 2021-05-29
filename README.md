@@ -17,7 +17,6 @@
 </p>
 
 <p align="center">
-		<a href="#demo">Demo</a> •
 		<a href="#how-to-use">How To Use</a> •
 		<a href="#key-features">Key Features</a> •
 		<a href="#local-instance">Local Instance</a> •
