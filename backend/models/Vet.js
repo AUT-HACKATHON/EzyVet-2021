@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Profile = require('../models/Profile');
+const Profile = require('../models/User');
 
 const Location = new mongoose.Schema({
 	lat: {
@@ -10,6 +11,15 @@ const Location = new mongoose.Schema({
 		type: Number,
 		required: true,
 	},
+});
+
+const Endorsements = new mongoose.Schema({
+	type: {
+		type: String,
+		enum: ['Dog', 'Cat', 'Turtle', 'Lizard', 'Fish'],
+		required: true,
+	},
+	endorsements: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 });
 
 const Vet = new mongoose.Schema({
@@ -35,6 +45,7 @@ const Vet = new mongoose.Schema({
 		required: true,
 	},
 	profiles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Profile' }],
+	endorsements: [{ type: Endorsements }],
 	image: {
 		type: String,
 	},
