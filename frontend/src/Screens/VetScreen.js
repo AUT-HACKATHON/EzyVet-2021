@@ -28,9 +28,10 @@ const doctorStyle = {
 };
 
 const VetScreen = ({ history, match }) => {
-	const { vetData } = useContext(VetContext);
+	const { vetData, location } = useContext(VetContext);
 	const [vet, setVet] = useState();
 	const [profiles, setProfiles] = useState();
+	const [markers, setMarkers] = useState([]);
 
 	// const vet = vetData.find((x) => x.place_id === match.params.id);
 
@@ -38,6 +39,25 @@ const VetScreen = ({ history, match }) => {
 		if (vetData) {
 			const temp = vetData.find((x) => x.place_id === match.params.id);
 			setVet(temp);
+			var mark = [
+				{
+					lat: temp.location.lat,
+					lng: temp.location.lng,
+					info: temp.name,
+				},
+			];
+			if (location) {
+				mark = [
+					{
+						lat: location.latitude,
+						lng: location.longitude,
+						info: 'Your Location',
+					},
+					...mark,
+				];
+			}
+			console.log(location, mark);
+			setMarkers(mark);
 		}
 
 		const fetchProfiles = async () => {
@@ -46,7 +66,7 @@ const VetScreen = ({ history, match }) => {
 		};
 
 		fetchProfiles();
-	}, [match.params.id, vetData]);
+	}, [location, match.params.id, vetData]);
 
 	return (
 		<div className="d-flex flex-column align-items-center">
@@ -226,16 +246,7 @@ const VetScreen = ({ history, match }) => {
 						<HeaderStyle font="2.4rem" color="black" fontWeight="500" align="center">
 							Find on the map
 						</HeaderStyle>
-						<Map
-							markers={[
-								{
-									lat: vet.location.lat,
-									lng: vet.location.lng,
-									info: vet.name,
-								},
-							]}
-							zoom={12}
-						/>
+						<Map markers={markers} zoom={12} />
 					</Col>
 				</>
 			) : (
