@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Profile = require('../models/Profile');
-const Profile = require('../models/User');
+const User = require('../models/User');
 
 const Location = new mongoose.Schema({
 	lat: {
