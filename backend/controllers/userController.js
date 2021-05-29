@@ -19,6 +19,7 @@ exports.authUser = asyncHandler(async (req, res) => {
 			_id: user._id,
 			name: user.name,
 			email: user.email,
+			liked: user.liked,
 			token: generateToken(user._id),
 		});
 	} else {
@@ -57,6 +58,7 @@ exports.registerUser = asyncHandler(async (req, res) => {
 			_id: user._id,
 			name: user.name,
 			email: user.email,
+			liked: user.liked,
 			token: generateToken(user._id),
 		});
 	} else {
