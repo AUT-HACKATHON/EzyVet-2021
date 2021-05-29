@@ -4,6 +4,7 @@ const { MongoMemoryServer } = require('mongodb-memory-server');
 const mongod = new MongoMemoryServer();
 let connected = false;
 
+//@desc connect to mongo memory server
 const connectDB = async () => {
 	try {
 		if (!connected) {
@@ -24,6 +25,7 @@ const connectDB = async () => {
 	}
 };
 
+//@desc close mongo database connection
 const closeDB = async () => {
 	try {
 		await mongoose.connection.dropDatabase();
@@ -36,6 +38,7 @@ const closeDB = async () => {
 	}
 };
 
+//@desc clear database
 const clearDB = async () => {
 	try {
 		const collections = Object.values(mongoose.connection.collections);

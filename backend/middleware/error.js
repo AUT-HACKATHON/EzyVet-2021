@@ -1,3 +1,4 @@
+//@desc handle not found pages
 exports.notFound = (req, res, next) => {
 	const error = new Error(`Not Found - ${req.originalUrl}`);
 
@@ -5,6 +6,7 @@ exports.notFound = (req, res, next) => {
 	next(error);
 };
 
+//@desc handle error pages
 exports.errorHandler = (err, req, res, next) => {
 	const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
 

@@ -1,5 +1,6 @@
 const { connectDB, clearDB, closeDB } = require('./db.memory');
 
+//@desc test mongo db
 describe('Mongo memory test', () => {
 	it('Mongodb memory connect test', async () => {
 		expect.assertions(0);
