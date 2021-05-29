@@ -8,7 +8,6 @@
 		"@testing-library/react": "^11.1.0",
 		"@testing-library/user-event": "^12.1.10",
 		"axios": "^0.21.1",
-		"babel-jest": "26.6.0",
 		"css-in-js-media": "^2.0.0",
 		"elements-x": "^1.5.0",
 		"geolib": "^3.3.1",
