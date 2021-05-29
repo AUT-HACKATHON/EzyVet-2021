@@ -1,13 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Row, Col, Dropdown } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import Loader from '../components/Loader';
 import VetItemList from '../components/VetItemList';
 import { VetContext } from '../context/';
-import GooglePlacesAutocomplete, { geocodeByPlaceId } from 'react-google-places-autocomplete';
 import { getDistance } from 'geolib';
 import { UserContext } from '../context';
-
-const sortArr = ['Default', 'Name', 'Distance', 'Rating'];
 
 const LikedVetsScreen = ({ history }) => {
 	const { vetData, setVetData, location } = useContext(VetContext);

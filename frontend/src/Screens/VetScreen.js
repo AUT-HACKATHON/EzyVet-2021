@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Accordion, Card, Image, ListGroup, Button } from 'react-bootstrap';
+import { Accordion, Image, ListGroup } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
 import Loader from '../components/Loader';
 import { VetContext } from '../context/';
@@ -7,14 +7,7 @@ import axios from 'axios';
 import Map from '../components/Map';
 import { HeaderStyle, TextStyle } from '../components/styledComponents/HomeElements';
 import { ProfileImage } from '../components/styledComponents/VetElements';
-import {
-	AiOutlineHeart,
-	AiFillHeart,
-	AiFillStar,
-	AiFillPhone,
-	AiOutlineLink,
-} from 'react-icons/ai';
-import { GiPathDistance } from 'react-icons/gi';
+import { AiFillStar, AiFillPhone, AiOutlineLink } from 'react-icons/ai';
 import { IconContext } from 'react-icons';
 import { ImLocation2 } from 'react-icons/im';
 
