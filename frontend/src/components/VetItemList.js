@@ -56,7 +56,7 @@ const VetItemList = ({ history, vet }) => {
 					</div>
 				</VetCardImg>
 				<VetCardBody>
-					<LinkContainer to={`vet/${vet.place_id}`}>
+					<LinkContainer to={`vet/${vet.place_id}`} style={{ cursor: 'pointer' }}>
 						<VetCardTitle>
 							{vet.name}{' '}
 							<div className="d-flex align-items-center ml-1">
