@@ -46,8 +46,8 @@ const Header = () => {
 							<div>
 								<NavDropdown title={<span> {user.name}</span>} id="username">
 									<NavDropdown.Item className="my-1">
-										<LinkContainer className="p-0" to="/other">
-											<Nav.Link>Other</Nav.Link>
+										<LinkContainer className="p-0" to="/liked">
+											<Nav.Link>Your Vets</Nav.Link>
 										</LinkContainer>
 									</NavDropdown.Item>
 									<NavDropdown.Item className="my-1">

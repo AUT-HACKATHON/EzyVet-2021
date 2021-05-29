@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Button, Image } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import Slide from 'react-reveal';
 import { LinkContainer } from 'react-router-bootstrap';
 import { ImageStyle, HeaderStyle, TextStyle } from './styledComponents/HomeElements';

@@ -135,10 +135,14 @@ const ListScreen = ({ history }) => {
 			{displayVets ? (
 				<Row>
 					{displayVets.map((value, index) => (
-						<Col key={index} sm={12} md={6} lg={4} xl={3}>
-							<VetItemList history={history} vet={value}>
-								{' '}
-							</VetItemList>
+						<Col
+							key={index}
+							sm={12}
+							md={6}
+							lg={4}
+							className="d-flex align-items-center flex-column"
+						>
+							<VetItemList history={history} vet={value} />
 						</Col>
 					))}
 				</Row>

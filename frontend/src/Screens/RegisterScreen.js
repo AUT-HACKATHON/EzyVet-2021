@@ -41,7 +41,7 @@ const RegisterScreen = ({ history }) => {
 	return (
 		<Container>
 			<Row>
-				<Col md={8} xs={12}>
+				<Col md={8} xs={12} className="mx-auto">
 					<Form onSubmit={submitHandler} className="my-5">
 						<Form.Group controlId="name">
 							<Form.Label>Name</Form.Label>
