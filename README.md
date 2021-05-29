@@ -28,6 +28,15 @@
 
 ![image](https://user-images.githubusercontent.com/48781163/120053553-f85a1e80-c07e-11eb-95c1-7e3017c31f94.png)
 
+## Backend 
+
+Backend is written in Node.js and Express.js. The database design is MongoDB hosted by AWS.
+Using mongoose library to interact witht the database.
+
+## Frontend 
+
+Frontend is written in React.js. Interacts with the backend using axios library.
+
 ## How To Use
 
 Go to <a href="https://ezyvetlife.herokuapp.com/">https://ezyvetlife.herokuapp.com/</a> and click list or login.
