@@ -7,6 +7,16 @@ import axios from 'axios';
 import Map from '../components/Map';
 import { HeaderStyle, TextStyle } from '../components/styledComponents/HomeElements';
 import { ProfileImage } from '../components/styledComponents/VetElements';
+import {
+	AiOutlineHeart,
+	AiFillHeart,
+	AiFillStar,
+	AiFillPhone,
+	AiOutlineLink,
+} from 'react-icons/ai';
+import { GiPathDistance } from 'react-icons/gi';
+import { IconContext } from 'react-icons';
+import { ImLocation2 } from 'react-icons/im';
 
 const itemStyle = {
 	backgroundColor: 'transparent',
@@ -17,6 +27,7 @@ const imgStyle = {
 	display: 'block',
 	objectFit: 'cover',
 	right: '0px',
+	boxShadow: '8px 8px #00ACB6',
 };
 const doctorStyle = {
 	border: '1px solid #c7c7c7',
@@ -57,30 +68,75 @@ const VetScreen = ({ history, match }) => {
 								className="ml-5"
 								src={vet.image ? vet.image : '/img/logo.png'}
 							></Image>
+							{vet.rating && (
+								<div className="d-flex justify-content-center align-items-center my-3 ml-3">
+									Rating:
+									<IconContext.Provider
+										value={{
+											size: '1.5em',
+											color: '#ecc94b',
+											className: 'ml-1',
+										}}
+									>
+										<div>
+											<AiFillStar />
+										</div>
+									</IconContext.Provider>
+									{vet.rating}
+								</div>
+							)}
 						</Col>
 						<Col md={6}>
 							<ListGroup variant="flush">
 								<ListGroup.Item style={itemStyle}>
 									<h2>{vet.name}</h2>
 								</ListGroup.Item>
-
+								{/* LOCATION */}
 								<ListGroup.Item style={itemStyle}>
-									Location: {vet.vicinity}
+									<div className="d-flex align-items-center mt-1">
+										<IconContext.Provider
+											value={{ size: '1em', className: 'mr-3' }}
+										>
+											<div>
+												<ImLocation2 />
+											</div>
+										</IconContext.Provider>
+										<div>{vet.vicinity}</div>
+									</div>
 								</ListGroup.Item>
 								{vet.phone && (
 									<ListGroup.Item style={itemStyle}>
-										Phone Number:{' '}
-										<a href={'mailto:' + vet.phone}>{vet.phone}</a>
+										<div className="d-flex align-items-center mt-1">
+											<IconContext.Provider
+												value={{ size: '1em', className: 'mr-3' }}
+											>
+												<div>
+													<AiFillPhone />
+												</div>
+											</IconContext.Provider>
+											<div>
+												{' '}
+												<a href={'mailto:' + vet.phone}>{vet.phone}</a>
+											</div>
+										</div>
+										{/* Phone Number:{' '}
+										<a href={'mailto:' + vet.phone}>{vet.phone}</a> */}
 									</ListGroup.Item>
 								)}
 								{vet.website && (
 									<ListGroup.Item style={itemStyle}>
-										Website: <a href={vet.website}>{vet.website}</a>
-									</ListGroup.Item>
-								)}
-								{vet.rating && (
-									<ListGroup.Item style={itemStyle}>
-										Rating: {vet.rating}
+										<div className="d-flex align-items-center mt-1">
+											<IconContext.Provider
+												value={{ size: '1em', className: 'mr-3' }}
+											>
+												<div>
+													<AiOutlineLink />
+												</div>
+											</IconContext.Provider>
+											<div>
+												<a href={vet.website}>{vet.website}</a>
+											</div>
+										</div>
 									</ListGroup.Item>
 								)}
 
@@ -101,7 +157,7 @@ const VetScreen = ({ history, match }) => {
 										<Accordion.Collapse eventKey="0">
 											<ListGroup>
 												{vet.opening_hours.map((el, index) => (
-													<ListGroup.Item key={index}>
+													<ListGroup.Item key={index} style={itemStyle}>
 														<div key={index}>{el}</div>
 													</ListGroup.Item>
 												))}
